@@ -55,5 +55,17 @@ class FaseRepository{
         $stm->execute();
     }
 
+    public function updateFase(Fase $fase){
+        $sql = "UPDATE fases SET nome = :nome, id_modulo = :id_modulo, tipo_fase = :tipo_fase, conteudo = :conteudo WHERE id_fase = :id";
+        
+        $stm = $this->connection->prepare($sql);
+        $stm->bindValue(':nome', $fase->getNome());
+        $stm->bindValue(':id_modulo', $fase->getIdModulo());
+        $stm->bindValue(':tipo_fase', $fase->getTipoFase());
+        $stm->bindValue(':conteudo', $fase->getConteudo());
+        $stm->bindValue(':id', $fase->getId());
+        $stm->execute();
+    }
+
 
 }

@@ -33,4 +33,9 @@ class FaseService
     {
         $this->repository->deleteFase($id);
     }
+
+    public function updateFase(Fase $fase)
+    {
+        $this->repository->updateFase($fase);
+    }
 }

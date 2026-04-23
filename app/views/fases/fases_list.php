@@ -49,6 +49,9 @@
                                         <a href="<?= URL_BASE ?>/fases/excluir?id=<?= $fase['id_fase'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Deseja excluir esta fase?')">
                                             <i class="bi bi-trash"></i> Excluir
                                         </a>
+                                        <a href="<?= URL_BASE ?>/fases/editar?id=<?= $fase['id_fase'] ?>" class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-pencil"></i> Editar
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
