@@ -8,6 +8,10 @@ class Validador{
 
         if (empty($data['nome'])) {
             $erros['nome'] = 'O nome do módulo é obrigatório.';
+        } 
+        
+        if (isset($data['nome']) && strlen($data['nome']) < 5) {
+            $erros['nome'] = 'O nome do módulo deve ter pelo menos 5 caracteres.';
         }
 
         if (empty($data['descricao'])) {
@@ -26,6 +30,10 @@ class Validador{
 
         if (empty($data['nome'])) {
             $erros['nome'] = 'O nome da fase é obrigatório.';
+        }
+
+        if (isset($data['nome']) && strlen($data['nome']) < 6) {
+            $erros['nome'] = 'O nome da fase deve ter pelo menos 6 caracteres.';
         }
 
         if (empty($data['id_modulo']) || !is_numeric($data['id_modulo']) || $data['id_modulo'] <= 0) {
