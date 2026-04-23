@@ -8,6 +8,8 @@ use app\core\Router;
 $router = new Router();
 
 $router->get('/', 'ModuloController@listarTodos');
+$router->get('/modulos', 'ModuloController@listarTodos');
+$router->get('/modulos/modulo', 'ModuloController@listarModulo');
 
 //Modulos
 $router->get('/modulos/cadastrar', 'ModuloController@criar');

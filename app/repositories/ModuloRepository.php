@@ -40,4 +40,11 @@ class ModuloRepository{
         $stm->bindValue(':material_apoio', $modulo->getMaterialApoio());
         $stm->execute();
     }
+
+    public function deleteModulo(int $id){
+        $stm = $this->connection->prepare("DELETE FROM modulos WHERE id_modulo = :id");
+        $stm->bindValue('id', $id);
+        $stm->execute();
+    }
+
 }
