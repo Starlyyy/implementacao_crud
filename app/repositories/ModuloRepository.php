@@ -47,4 +47,16 @@ class ModuloRepository{
         $stm->execute();
     }
 
+    public function updateModulo(Modulo $modulo){
+        $sql = "UPDATE modulos SET nome = :nome, descricao = :descricao, min_estrelas_liberacao = :min_estrelas_liberacao, material_apoio = :material_apoio WHERE id_modulo = :id";
+        
+        $stm = $this->connection->prepare($sql);
+        $stm->bindValue(':nome', $modulo->getNome());
+        $stm->bindValue(':descricao', $modulo->getDescricao());
+        $stm->bindValue(':min_estrelas_liberacao', $modulo->getMinEstrelasLiberacao());
+        $stm->bindValue(':material_apoio', $modulo->getMaterialApoio());
+        $stm->bindValue(':id', $modulo->getId());
+        $stm->execute();
+    }
+
 }

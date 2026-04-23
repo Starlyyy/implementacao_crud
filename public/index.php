@@ -19,6 +19,7 @@ $router->post('/modulos/atualizar', 'ModuloController@atualizar');
 $router->get('/modulos/excluir', 'ModuloController@excluir');
 
 //Fases
+$router->get('/fases/fases_list', 'FaseController@listarFases');  // Nova rota para listagem de fases por módulo
 $router->get('/fases/cadastrar', 'FaseController@criar');
 $router->post('/fases/salvar', 'FaseController@salvar');
 $router->get('/fases/editar', 'FaseController@editar');

@@ -46,6 +46,9 @@
                                         <a href='<?= URL_BASE ?>/modulos/modulo?id=<?= $modulo['id_modulo'] ?>' class="btn btn-sm btn-outline-primary">
                                             <i class="bi bi-eye"></i> Ver
                                         </a>
+                                        <a href="<?= URL_BASE ?>/modulos/editar?id=<?= $modulo['id_modulo'] ?>" class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-pencil"></i> Editar
+                                        </a>
                                         <a href="<?= URL_BASE ?>/modulos/excluir?id=<?= $modulo['id_modulo'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Deseja excluir este módulo?')">
                                             <i class="bi bi-trash"></i> Excluir
                                         </a>

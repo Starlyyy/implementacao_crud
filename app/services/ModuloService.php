@@ -1,11 +1,12 @@
-<?php 
+<?php
 
 namespace app\services;
 
 use app\models\Modulo;
 use app\repositories\ModuloRepository;
 
-class ModuloService{
+class ModuloService
+{
     private ModuloRepository $repository;
 
     public function __construct()
@@ -13,19 +14,28 @@ class ModuloService{
         $this->repository = new ModuloRepository();
     }
 
-    public function getModulos(): array{
+    public function getModulos(): array
+    {
         return $this->repository->getModulos();
     }
 
-    public function getModuloById(int $id){
+    public function getModuloById(int $id)
+    {
         return $this->repository->getModuloById($id);
     }
 
-    public function saveModulo(Modulo $modulo){
+    public function saveModulo(Modulo $modulo)
+    {
         $this->repository->saveModulo($modulo);
     }
 
-    public function deleteModulo(int $id){
+    public function deleteModulo(int $id)
+    {
         $this->repository->deleteModulo($id);
+    }
+
+    public function updateModulo(Modulo $modulo)
+    {
+        $this->repository->updateModulo($modulo);
     }
 }

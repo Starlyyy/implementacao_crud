@@ -6,7 +6,7 @@ class Modulo{
     private int $id;
     private string $nome;
     private string $descricao;
-    private string $min_estrelas_liberacao;
+    private int $min_estrelas_liberacao;
     private string $material_apoio;
 
     /**
@@ -66,7 +66,7 @@ class Modulo{
     /**
      * Get the value of min_estrelas_liberacao
      */
-    public function getMinEstrelasLiberacao(): string
+    public function getMinEstrelasLiberacao(): int
     {
         return $this->min_estrelas_liberacao;
     }
@@ -74,7 +74,7 @@ class Modulo{
     /**
      * Set the value of min_estrelas_liberacao
      */
-    public function setMinEstrelasLiberacao(string $min_estrelas_liberacao): self
+    public function setMinEstrelasLiberacao(int $min_estrelas_liberacao): self
     {
         $this->min_estrelas_liberacao = $min_estrelas_liberacao;
 
