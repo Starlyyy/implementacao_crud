@@ -1,7 +1,5 @@
 <?php
 
-//TODO: - usar o validador
-
 namespace app\controllers;
 
 use app\core\Controller;
@@ -37,18 +35,19 @@ class ModuloController extends Controller{
     }
 
     public function salvar(){
-        // Validação
         $erros = Validador::validarModulo($_POST);
+        
         if (!empty($erros)) {
-            // Redirecionar de volta ao criar com erros (implemente se necessário)
-            $this->redirect(URL_BASE . '/modulos/cadastrar');
+            $data['erros'] = $erros;
+            $data['modulo'] = $_POST;
+            $this->view('modulos/modulos_create', $data);
             return;
         }
 
         $modulo = new Modulo();
         $modulo->setNome($_POST['nome']);
         $modulo->setDescricao($_POST['descricao']);
-        $modulo->setMinEstrelasLiberacao((int)$_POST['min_estrelas_liberacao']);  // Converta para int
+        $modulo->setMinEstrelasLiberacao((int)$_POST['min_estrelas_liberacao']);
         $modulo->setMaterialApoio($_POST['material_apoio']);
 
         $this->moduloService->saveModulo($modulo);
@@ -81,22 +80,17 @@ class ModuloController extends Controller{
             return;
         }
 
-        // Validação
         $erros = Validador::validarModulo($_POST);
+        
         if (!empty($erros)) {
-            // Redirecionar de volta ao editar com erros (implemente se necessário)
-            $this->redirect(URL_BASE . '/modulos/editar?id=' . $_POST['id']);
+            $id = (int)$_POST['id'];
+            $data['erros'] = $erros;
+            $data['modulo'] = $this->moduloService->getModuloById($id);
+            $this->view('modulos/modulos_edit', $data);
             return;
         }
 
         $id = (int)$_POST['id'];
-        $modulo = $this->moduloService->getModuloById($id);
-        if (!$modulo) {
-            $this->redirect(URL_BASE . '/modulos');
-            return;
-        }
-
-        // Atualizar campos
         $moduloObj = new Modulo();
         $moduloObj->setId($id);
         $moduloObj->setNome($_POST['nome']);
@@ -104,7 +98,7 @@ class ModuloController extends Controller{
         $moduloObj->setMinEstrelasLiberacao((int)$_POST['min_estrelas_liberacao']);
         $moduloObj->setMaterialApoio($_POST['material_apoio']);
 
-        $this->moduloService->updateModulo($moduloObj);  // Método a ser adicionado no service
+        $this->moduloService->updateModulo($moduloObj);
         $this->redirect(URL_BASE . '/modulos');
     }
 }
